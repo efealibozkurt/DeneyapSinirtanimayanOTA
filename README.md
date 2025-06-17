@@ -67,8 +67,8 @@ void loop() {
 ```
 ## GitHub Repo Hazırlığı (Kütüphaneyi Kullananlar İçin)
 **Bu kütüphanenin projenizdeki güncellemeleri çekebilmesi için, projenizin bulunduğu GitHub reposunu aşağıdaki gibi hazırlamanız gerekmektedir:**
- -firmware.bin Dosyası: Arduino IDE'de Taslak > Derlenmiş Binary'i Çıkar seçeneği ile oluşturduğunuz .bin dosyasını reponuzun ana dizinine yükleyin. Bu dosya, cihaza yüklenecek olan asıl programdır.
- -Sürüm Kontrol Dosyası: Reponuzda basit bir metin dosyası (version.txt, README.md vb.) oluşturun. Kütüphane, bu dosyanın içinde yeni sürüm bilgisini arayacaktır. Sürüm bilgisi aşağıdaki özel formatta olmalıdır:
+    -   firmware.bin Dosyası: Arduino IDE'de Taslak > Derlenmiş Binary'i Çıkar seçeneği ile oluşturduğunuz .bin dosyasını reponuzun ana dizinine yükleyin. Bu dosya, cihaza yüklenecek olan asıl programdır.
+    -   Sürüm Kontrol Dosyası: Reponuzda basit bir metin dosyası (version.txt, README.md vb.) oluşturun. Kütüphane, bu dosyanın içinde yeni sürüm bilgisini arayacaktır. Sürüm bilgisi aşağıdaki özel formatta olmalıdır:
 
 Proje hakkında bilgiler...
 Son Sürüm: [OTA-VERSION:1.2]
@@ -76,10 +76,10 @@ Daha fazla bilgi...
 Bu basit etiketli yapı, ESP32'nin belleğini yormadan sürüm bilgisini kolayca okumasını sağlar.
 
 ## Fonksiyonlar
-`DeneyapSinirtanimayaOTA(...)`: Kütüphaneyi kurar ve tüm ayarları alır.
-`baslat(bool offlineModaIzinVer)`: Cihazı başlatır. `true` parametresi, WiFi yoksa cihazın çevrimdışı çalışmasına izin verir. `false` veya boş bırakılırsa, bağlantı kuramayınca cihaz kendini yeniden başlatır.
-`dongu()`: Varsayılan `GPKEY` butonunu dinler.
-`dongu(int customButtonPin)`: Belirttiğiniz harici butonu dinler.
+-   `DeneyapSinirtanimayaOTA(...)`: Kütüphaneyi kurar ve tüm ayarları alır.
+-   `baslat(bool offlineModaIzinVer)`: Cihazı başlatır. `true` parametresi, WiFi yoksa cihazın çevrimdışı çalışmasına izin verir. `false` veya boş bırakılırsa, bağlantı kuramayınca cihaz kendini yeniden başlatır.
+-   `dongu()`: Varsayılan `GPKEY` butonunu dinler.
+-   `dongu(int customButtonPin)`: Belirttiğiniz harici butonu dinler.
 
 ## Lisans
 Bu proje, MIT Lisansı altında dağıtılmaktadır. Detaylar için `LICENSE` dosyasına bakınız.
