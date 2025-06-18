@@ -1,0 +1,7 @@
+#######################################
+# Syntax Highlighting for Arduino IDE
+#######################################
+
+DeneyapSinirtanimayaOTA	KEYWORD1
+baslat	KEYWORD2
+dongu	KEYWORD2
