@@ -45,8 +45,8 @@
 const char* WIFI_SSID = "SENIN_WIFI_AGININ_ADI";
 const char* WIFI_PASSWORD = "SENIN_WIFI_SIFREN";
 const char* GITHUB_TOKEN = "ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; 
-const String FIRMWARE_VERSION_URL = "[https://raw.githubusercontent.com/kullanici/repo/main/version.txt](https://raw.githubusercontent.com/kullanici/repo/main/version.txt)";
-const String FIRMWARE_BIN_URL = "[https://raw.githubusercontent.com/kullanici/repo/main/firmware.bin](https://raw.githubusercontent.com/kullanici/repo/main/firmware.bin)";
+const String FIRMWARE_VERSION_URL = "https://raw.githubusercontent.com/kullanici/repo/main/version.txt";
+const String FIRMWARE_BIN_URL = "https://raw.githubusercontent.com/kullanici/repo/main/firmware.bin";
 const String FIRMWARE_VERSION = "1.0"; // Bu cihaza yüklenen yazılımın mevcut versiyonu
 
 // Kütüphaneden bir nesne oluşturun
@@ -63,7 +63,8 @@ void loop() {
   ota.dongu();
 
   // Kendi kodlarınız buraya...
-}
+} Kendi kodlarınız buraya...
+}**
 ```
 ## GitHub Repo Hazırlığı (Kütüphaneyi Kullananlar İçin)
 **Bu kütüphanenin projenizdeki güncellemeleri çekebilmesi için, projenizin bulunduğu GitHub reposunu aşağıdaki gibi hazırlamanız gerekmektedir:**
