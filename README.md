@@ -50,8 +50,7 @@ const String FIRMWARE_BIN_URL = "https://raw.githubusercontent.com/kullanici/rep
 const String FIRMWARE_VERSION = "1.0"; // Bu cihaza yüklenen yazılımın mevcut versiyonu
 
 // Kütüphaneden bir nesne oluşturun
-DeneyapSinirtanimayaOTA ota(WIFI_SSID, WIFI_PASSWORD, GITHUB_TOKEN, 
-                          FIRMWARE_VERSION_URL, FIRMWARE_BIN_URL, FIRMWARE_VERSION);
+DeneyapSinirtanimayaOTA ota(WIFI_SSID, WIFI_PASSWORD, GITHUB_TOKEN, FIRMWARE_VERSION_URL, FIRMWARE_BIN_URL, FIRMWARE_VERSION);
 
 void setup() {
   // WiFi bağlanamazsa bile kodun devam etmesi için "true" parametresini verin.
