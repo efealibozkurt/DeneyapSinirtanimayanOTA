@@ -62,7 +62,7 @@ void loop() {
   ota.dongu();
 
   // Kendi kodlarınız buraya...
-} Kendi kodlarınız buraya...
+}
 ```
 ## GitHub Repo Hazırlığı (Kütüphaneyi Kullananlar İçin)
 **Bu kütüphanenin projenizdeki güncellemeleri çekebilmesi için, projenizin bulunduğu GitHub reposunu aşağıdaki gibi hazırlamanız gerekmektedir:**
