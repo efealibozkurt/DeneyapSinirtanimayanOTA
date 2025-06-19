@@ -10,7 +10,7 @@
 
 -   🌍 **Uzaktan Güncelleme:** Cihazınız sizden kilometrelerce uzakta olsa bile, güncelleme için tek gereken bir WiFi bağlantısıdır.
 -   ⚙️ **Kolay Entegrasyon:** Projenize OTA yeteneği kazandırmak için `setup()` ve `loop()` fonksiyonlarına sadece birer satır kod eklemeniz yeterlidir.
--   📺 **OLED Ekran Desteği:** SSD1306 OLED ekranlar üzerinden güncelleme durumu hakkında (bağlantı, indirme, başarı, hata) anlık geri bildirim alabilirsiniz.
+-   📺 **Esnek Ekran Desteği:** Artık belirli bir ekrana bağımlı değil! onStatus() callback fonksiyonu ile durum mesajlarını istediğiniz OLED, LCD, TFT ekrana veya Seri Port'a kolayca yönlendirebilirsiniz.
 -   🖲️ **Esnek Buton Kontrolü:** Güncellemeleri manuel olarak tetiklemek için Deneyap Kart üzerindeki dahili `GPKEY` butonunu veya harici bağlayacağınız herhangi bir butonu kullanabilirsiniz.
 -   🌐 **Çevrimdışı (Offline) Mod:** Başlangıçta WiFi bağlantısı kurulamadığında cihazınızın kilitlenmesini veya sürekli yeniden başlamasını engeller, projeniz çalışmaya devam eder.
 -   🔒 **Güvenli Erişim:** Özel (private) GitHub repolarından güncelleme çekmek için Kişisel Erişim Token'ı (Personal Access Token) kullanımını destekler.
@@ -19,12 +19,10 @@
 
 -   **Donanım:**
     -   ESP32 tabanlı bir geliştirme kartı (Deneyap Kart ile test edilmiştir).
-    -   SSD1306 I2C OLED Ekran (128x64).
+    -   İsteğe bağlı olarak durum bildirimi için herhangi bir ekran (OLED, LCD vb.).
 -   **Yazılım:**
     -   Arduino IDE
     -   Arduino IDE için ESP32 Kart Yöneticisi
-    -   `Adafruit GFX Library`
-    -   `Adafruit SSD1306 Library`
 
 ## Kurulum
 
@@ -45,13 +43,12 @@
 const char* WIFI_SSID = "SENIN_WIFI_AGININ_ADI";
 const char* WIFI_PASSWORD = "SENIN_WIFI_SIFREN";
 const char* GITHUB_TOKEN = "ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; 
-const String FIRMWARE_VERSION_URL = "[https://raw.githubusercontent.com/kullanici/repo/main/version.txt](https://raw.githubusercontent.com/kullanici/repo/main/version.txt)";
-const String FIRMWARE_BIN_URL = "[https://raw.githubusercontent.com/kullanici/repo/main/firmware.bin](https://raw.githubusercontent.com/kullanici/repo/main/firmware.bin)";
-const String FIRMWARE_VERSION = "1.0"; // Bu cihaza yüklenen yazılımın mevcut versiyonu
+const String FIRMWARE_VERSION_URL = "https://raw.githubusercontent.com/kullanici/repo/main/version.txt";
+const String FIRMWARE_BIN_URL = "https://raw.githubusercontent.com/kullanici/repo/main/firmware.bin";
+const String FIRMWARE_VERSION = "2.0"; // Bu cihaza yüklenen yazılımın mevcut versiyonu
 
 // Kütüphaneden bir nesne oluşturun
-DeneyapSinirtanimayaOTA ota(WIFI_SSID, WIFI_PASSWORD, GITHUB_TOKEN, 
-                          FIRMWARE_VERSION_URL, FIRMWARE_BIN_URL, FIRMWARE_VERSION);
+DeneyapSinirtanimayaOTA ota(WIFI_SSID, WIFI_PASSWORD, GITHUB_TOKEN, FIRMWARE_VERSION_URL, FIRMWARE_BIN_URL, FIRMWARE_VERSION);
 
 void setup() {
   // WiFi bağlanamazsa bile kodun devam etmesi için "true" parametresini verin.
@@ -70,13 +67,11 @@ void loop() {
 -   firmware.bin Dosyası: Arduino IDE'de Taslak > Derlenmiş Binary'i Çıkar seçeneği ile oluşturduğunuz .bin dosyasını reponuzun ana dizinine yükleyin. Bu dosya, cihaza yüklenecek olan asıl programdır.
 -   Sürüm Kontrol Dosyası: Reponuzda basit bir metin dosyası (version.txt, README.md vb.) oluşturun. Kütüphane, bu dosyanın içinde yeni sürüm bilgisini arayacaktır. Sürüm bilgisi aşağıdaki özel formatta olmalıdır:
 
-
+```
 Proje hakkında bilgiler...
-
 Son Sürüm: [OTA-VERSION:1.2]
-
 Daha fazla bilgi...
-
+```
 Bu basit etiketli yapı, ESP32'nin belleğini yormadan sürüm bilgisini kolayca okumasını sağlar.
 
 ## Fonksiyonlar
@@ -84,6 +79,7 @@ Bu basit etiketli yapı, ESP32'nin belleğini yormadan sürüm bilgisini kolayca
 -   `baslat(bool offlineModaIzinVer)`: Cihazı başlatır. `true` parametresi, WiFi yoksa cihazın çevrimdışı çalışmasına izin verir. `false` veya boş bırakılırsa, bağlantı kuramayınca cihaz kendini yeniden başlatır.
 -   `dongu()`: Varsayılan `GPKEY` butonunu dinler.
 -   `dongu(int customButtonPin)`: Belirttiğiniz harici butonu dinler.
+-   `onStatus(callback)`: Durum mesajlarını yakalamak için kendi fonksiyonunuzu atamanızı sağlar.
 
 ## Lisans
 Bu proje, MIT Lisansı altında dağıtılmaktadır. Detaylar için `LICENSE` dosyasına bakınız.
